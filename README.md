@@ -1,7 +1,7 @@
 # COM3D2.API
 
 ## Installation
-1. Install [BepInEx v5.3+](https://github.com/BepInEx/BepInEx/releases)
+1. Install [BepInEx v5.4+](https://github.com/BepInEx/BepInEx/releases)
 2. Extract the plugin .zip file to your game folder
 
 The plugin .dll should end up in COM3D2\BepInEx\plugins
