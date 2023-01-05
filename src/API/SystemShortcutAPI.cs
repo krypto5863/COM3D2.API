@@ -115,7 +115,6 @@ namespace COM3D2API
 
 		private class Hooks
 		{
-
 			[HarmonyPatch(typeof(SystemShortcut), "Start")]
 			[HarmonyPatch(typeof(SystemShortcut), "OnActiveSceneChanged")]
 			[HarmonyPostfix]
