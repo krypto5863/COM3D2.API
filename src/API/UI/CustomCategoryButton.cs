@@ -1,5 +1,5 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
+using System;
 using UnityEngine;
 
 namespace COM3D2API.UI
@@ -9,10 +9,13 @@ namespace COM3D2API.UI
 		internal readonly string Name;
 		internal readonly Action OnClickAction;
 		internal readonly Action OnCloseAction;
+
 		[CanBeNull]
 		internal readonly Action<bool> OnViewAction;
+
 		[CanBeNull]
 		internal readonly Action<GameObject> ButtonCreatedCallback;
+
 		[CanBeNull]
 		public GameObject Instance { get; internal set; }
 

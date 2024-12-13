@@ -1,8 +1,8 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using SaveDataExtended;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
-using SaveDataExtended;
 using UnityEngine;
 
 namespace COM3D2API.Character
@@ -82,9 +82,11 @@ namespace COM3D2API.Character
 
 			OnMaidRefreshedInternal();
 		}
+
 		protected virtual void OnMaidLoading()
 		{
 		}
+
 		internal void OnMaidLoadingInternal(Maid maid)
 		{
 			if (maid != Maid)
@@ -94,9 +96,9 @@ namespace COM3D2API.Character
 
 			OnMaidLoading();
 		}
+
 		protected virtual void OnMaidLoaded(CharacterMgr.PresetType presetType)
 		{
-			
 		}
 
 		internal void OnMaidBeingLoadedInternal(CharacterMgr.PresetType presetType = CharacterMgr.PresetType.All)
@@ -144,6 +146,7 @@ namespace COM3D2API.Character
 		protected virtual void OnMaidPropChanged(IEnumerable<MaidProp> maidProp)
 		{
 		}
+
 		internal void OnMaidPropChangedInternal(Maid maid, IEnumerable<MaidProp> maidProp)
 		{
 			if (maid != Maid)
