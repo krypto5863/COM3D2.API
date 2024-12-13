@@ -1,6 +1,6 @@
-﻿using HarmonyLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using HarmonyLib;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -11,15 +11,15 @@ namespace COM3D2API
 	/// </summary>
 	public static class SystemShortcutAPI
 	{
-		private static bool DidSystemShortcutHook;
+		private static bool _didSystemShortcutHook;
 		private static readonly List<ButtonData> ButtonsToCreate = new List<ButtonData>();
-		private static SystemShortcut SystemShortcutInstance;
-		private static GameObject ConfigButton;
-		private static UISprite UIShortcutSprite;
-		private static BoxCollider UIBoxCollider;
-		private static UIGrid UIShortcutGrid;
-		private static UILabel TooltipLabel;
-		private static UISprite TooltipSprite;
+		private static SystemShortcut _systemShortcutInstance;
+		private static GameObject _configButton;
+		private static UISprite _uiShortcutSprite;
+		private static BoxCollider _uiBoxCollider;
+		private static UIGrid _uiShortcutGrid;
+		private static UILabel _tooltipLabel;
+		private static UISprite _tooltipSprite;
 
 		internal static void RegisterHooks() => Harmony.CreateAndPatchAll(typeof(Hooks));
 
@@ -33,7 +33,7 @@ namespace COM3D2API
 		public static void AddButton(string name, Action onClickEvent, string tooltipText, byte[] textureBytes = null)
 		{
 			//If the SystemShortcut.Awake hook has already run add the button immediately, otherwise save the data which will run when the hook does
-			if (DidSystemShortcutHook)
+			if (_didSystemShortcutHook)
 				CreateButton(name, onClickEvent, tooltipText, textureBytes);
 			else
 				ButtonsToCreate.Add(new ButtonData(name, onClickEvent, tooltipText, textureBytes));
@@ -47,7 +47,7 @@ namespace COM3D2API
 			try
 			{
 				//Duplicate the config button
-				GameObject buttonCopy = Object.Instantiate(ConfigButton, UIShortcutGrid.transform, true);
+				var buttonCopy = Object.Instantiate(_configButton, _uiShortcutGrid.transform, true);
 				buttonCopy.name = name;
 
 				//Replace the onClick event
@@ -56,7 +56,7 @@ namespace COM3D2API
 				EventDelegate.Add(button.onClick, () => onClickEvent());
 
 				//Replace the UIEventTrigger events
-				UIEventTrigger uiEventTrigger = buttonCopy.GetComponent<UIEventTrigger>();
+				var uiEventTrigger = buttonCopy.GetComponent<UIEventTrigger>();
 				uiEventTrigger.onHoverOver.Clear();
 				uiEventTrigger.onHoverOut.Clear();
 				uiEventTrigger.onDragStart.Clear();
@@ -71,22 +71,24 @@ namespace COM3D2API
 					tex.LoadImage(textureBytes);
 
 					//Hide the original sprite
-					UISprite uiSprite = buttonCopy.GetComponent<UISprite>();
+					var uiSprite = buttonCopy.GetComponent<UISprite>();
 					uiSprite.type = UIBasicSprite.Type.Filled;
 					uiSprite.fillAmount = 0.0f;
 
 					//Add the texture
-					UITexture uiTexture = NGUITools.AddWidget<UITexture>(buttonCopy);
-					uiTexture.material = new Material(uiTexture.shader);
-					uiTexture.material.mainTexture = tex;
+					var uiTexture = NGUITools.AddWidget<UITexture>(buttonCopy);
+					uiTexture.material = new Material(uiTexture.shader)
+					{
+						mainTexture = tex
+					};
 					uiTexture.MakePixelPerfect();
 				}
 
 				//Makes the base sprite bigger so it fits our new stuff
-				UIShortcutSprite.width += (int)UIShortcutGrid.cellWidth;
-				UIShortcutGrid.Reposition();
+				_uiShortcutSprite.width += (int)_uiShortcutGrid.cellWidth;
+				_uiShortcutGrid.Reposition();
 				//Updates the collider so the menu doesn't hide improperly.
-				NGUITools.UpdateWidgetCollider(UIShortcutSprite.gameObject);
+				NGUITools.UpdateWidgetCollider(_uiShortcutSprite.gameObject);
 			}
 			catch (Exception ex)
 			{
@@ -101,19 +103,19 @@ namespace COM3D2API
 		/// <param name="text">Tooltip text</param>
 		private static void ShowTooltip(string text)
 		{
-			TooltipLabel.text = text;
-			TooltipLabel.width = 0;
-			TooltipLabel.MakePixelPerfect();
-			TooltipSprite.width = TooltipLabel.width + 15;
-			TooltipSprite.gameObject.SetActive(true);
+			_tooltipLabel.text = text;
+			_tooltipLabel.width = 0;
+			_tooltipLabel.MakePixelPerfect();
+			_tooltipSprite.width = _tooltipLabel.width + 15;
+			_tooltipSprite.gameObject.SetActive(true);
 		}
 
 		/// <summary>
 		/// Hide the tooltip
 		/// </summary>
-		private static void HideTooltip() => TooltipSprite.gameObject.SetActive(false);
+		private static void HideTooltip() => _tooltipSprite.gameObject.SetActive(false);
 
-		private class Hooks
+		private static class Hooks
 		{
 			[HarmonyPatch(typeof(SystemShortcut), "Start")]
 			[HarmonyPatch(typeof(SystemShortcut), "OnActiveSceneChanged")]
@@ -121,28 +123,28 @@ namespace COM3D2API
 			private static void UpdateCollider(SystemShortcut __instance)
 			{
 				//Kiss is actually retarded and they do some weird manual adjustment of the collider. We override their work after.
-				NGUITools.UpdateWidgetCollider(UIShortcutSprite.gameObject);
+				NGUITools.UpdateWidgetCollider(_uiShortcutSprite.gameObject);
 			}
 
 			[HarmonyPostfix, HarmonyPatch(typeof(SystemShortcut), "Awake")]
 			private static void SystemShortcut_Awake(SystemShortcut __instance)
 			{
-				SystemShortcutInstance = __instance;
+				_systemShortcutInstance = __instance;
 
 				try
 				{
-					UIBoxCollider = SystemShortcutInstance.GetComponentInChildren<BoxCollider>();
-					UIShortcutSprite = SystemShortcutInstance.GetComponentInChildren<UISprite>();
-					ConfigButton = SystemShortcutInstance.transform.Find("Base/Grid/Config").gameObject;
-					UIShortcutGrid = SystemShortcutInstance.GetComponentInChildren<UIGrid>();
-					TooltipLabel = (UILabel)Traverse.Create(SystemShortcutInstance).Field("m_labelExplanation").GetValue();
-					TooltipSprite = (UISprite)Traverse.Create(SystemShortcutInstance).Field("m_spriteExplanation").GetValue();
+					_uiBoxCollider = _systemShortcutInstance.GetComponentInChildren<BoxCollider>();
+					_uiShortcutSprite = _systemShortcutInstance.GetComponentInChildren<UISprite>();
+					_configButton = _systemShortcutInstance.transform.Find("Base/Grid/Config").gameObject;
+					_uiShortcutGrid = _systemShortcutInstance.GetComponentInChildren<UIGrid>();
+					_tooltipLabel = (UILabel)Traverse.Create(_systemShortcutInstance).Field("m_labelExplanation").GetValue();
+					_tooltipSprite = (UISprite)Traverse.Create(_systemShortcutInstance).Field("m_spriteExplanation").GetValue();
 
 					foreach (var button in ButtonsToCreate)
 						CreateButton(button.Name, button.OnClickEvent, button.TooltipText, button.TextureBytes);
 					ButtonsToCreate.Clear();
 
-					DidSystemShortcutHook = true;
+					_didSystemShortcutHook = true;
 				}
 				catch (Exception ex)
 				{

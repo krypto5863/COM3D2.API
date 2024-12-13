@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using static COM3D2API.Plugin;
+using static COM3D2API.Com3D2Api;
 
 [assembly: AssemblyTitle(PluginName)]
 [assembly: AssemblyDescription(PluginName)]

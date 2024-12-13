@@ -33,18 +33,21 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\bin\release\COM3D2.API.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\HarmonyX.2.7.0\lib\net35\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\COM3D2.GameLibs.2.24.0-r.1\lib\net35\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\packages\COM3D2.GameLibs.2.39.0-r.0\lib\net35\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\COM3D2.GameLibs.2.24.0-r.1\lib\net35\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\..\packages\COM3D2.GameLibs.2.39.0-r.0\lib\net35\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="BepInEx, Version=5.4.21.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BepInEx.BaseLib.5.4.21\lib\net35\BepInEx.dll</HintPath>
+    <Reference Include="BepInEx, Version=5.4.20.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BepInEx.BaseLib.5.4.20\lib\net35\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil, Version=0.10.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Mono.Cecil.0.10.4\lib\net35\Mono.Cecil.dll</HintPath>
@@ -74,25 +77,35 @@
       <HintPath>..\..\packages\UnityEngine.5.6.1\lib\net35\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\COM3D2.GameLibs.2.24.0-r.1\lib\net35\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\packages\COM3D2.GameLibs.2.39.0-r.0\lib\net35\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Plugin.cs" />
+    <Compile Include="Character\MaidApi.cs" />
+    <Compile Include="COM3D2Api.cs" />
+    <Compile Include="Character\MaidController.cs" />
+    <Compile Include="Character\MaidControllerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\CustomCategoryButton.cs" />
+    <Compile Include="UI\EditModeApi.cs" />
     <Compile Include="SystemShortcutAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\..\packages\BepInEx.Analyzers.1.0.1\analyzers\dotnet\cs\BepInEx.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\..\packages\BepInEx.Analyzers.1.0.1\analyzers\dotnet\cs\BepInEx.Analyzers.dll" />
-    <Analyzer Include="..\..\packages\Microsoft.Unity.Analyzers.1.8.2\analyzers\dotnet\cs\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="..\..\..\COM3D2.MaterialEditor\packages\Microsoft.Unity.Analyzers.1.21.0\analyzers\dotnet\cs\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\COM3D2.SaveDataExt\COM3D2.SaveDataExt\COM3D2.SaveDataExt.csproj">
+      <Project>{81bf7ae6-a5de-4a93-af65-2e14a3cb0beb}</Project>
+      <Name>COM3D2.SaveDataExt</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>IF EXIST "$(SolutionDir)PostBuild.bat" CALL "$(SolutionDir)PostBuild.bat" "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>del "F:\COM3D2Test\BepinEx\plugins\$(TargetFileName)"
+copy "$(TargetPath)" "F:\COM3D2Test\BepinEx\plugins"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets" Condition="Exists('..\..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
