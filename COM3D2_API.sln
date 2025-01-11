@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM3D2.API", "src\API\COM3D2.API.csproj", "{2B24B203-89CF-433D-9CCD-6C8B3AABA945}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "COM3D2.API.Core", "COM3D2.API.Core\COM3D2.API.Core.shproj", "{BB19E5D9-0A98-44CF-8EF1-3956C10C1D1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM3D2.SaveDataExt", "..\COM3D2.SaveDataExt\COM3D2.SaveDataExt\COM3D2.SaveDataExt.csproj", "{81BF7AE6-A5DE-4A93-AF65-2E14A3CB0BEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM3D2.API", "COM3D2.API\COM3D2.API.csproj", "{8C8F07A7-04EE-46EB-9534-99B88EDDE1C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM3D2.API.TwoFive", "COM3D2.API.TwoFive\COM3D2.API.TwoFive.csproj", "{9F7F87E5-BA2A-4799-A338-31837F0ED4BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM3D2.SaveDataExt", "..\COM3D2.SaveDataExt\COM3D2.SaveDataExt\COM3D2.SaveDataExt.csproj", "{815254FA-082C-4B7C-8851-1C676218AEB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM3D2.SaveDataExt.TwoFive", "..\COM3D2.SaveDataExt\COM3D2.SaveDataExt.TwoFive\COM3D2.SaveDataExt.TwoFive.csproj", "{6FA3E41F-4337-4CA3-9C93-7CEFAC1294BA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "COM3D2.SaveDataExt.Core", "..\COM3D2.SaveDataExt\COM3D2.SaveDataExt.Core\COM3D2.SaveDataExt.Core.shproj", "{FC16180B-1714-4960-939C-294A50C0C0A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +21,34 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2B24B203-89CF-433D-9CCD-6C8B3AABA945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B24B203-89CF-433D-9CCD-6C8B3AABA945}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B24B203-89CF-433D-9CCD-6C8B3AABA945}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B24B203-89CF-433D-9CCD-6C8B3AABA945}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81BF7AE6-A5DE-4A93-AF65-2E14A3CB0BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81BF7AE6-A5DE-4A93-AF65-2E14A3CB0BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81BF7AE6-A5DE-4A93-AF65-2E14A3CB0BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81BF7AE6-A5DE-4A93-AF65-2E14A3CB0BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C8F07A7-04EE-46EB-9534-99B88EDDE1C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C8F07A7-04EE-46EB-9534-99B88EDDE1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C8F07A7-04EE-46EB-9534-99B88EDDE1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C8F07A7-04EE-46EB-9534-99B88EDDE1C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F7F87E5-BA2A-4799-A338-31837F0ED4BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F7F87E5-BA2A-4799-A338-31837F0ED4BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F7F87E5-BA2A-4799-A338-31837F0ED4BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F7F87E5-BA2A-4799-A338-31837F0ED4BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{815254FA-082C-4B7C-8851-1C676218AEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815254FA-082C-4B7C-8851-1C676218AEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815254FA-082C-4B7C-8851-1C676218AEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815254FA-082C-4B7C-8851-1C676218AEB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FA3E41F-4337-4CA3-9C93-7CEFAC1294BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FA3E41F-4337-4CA3-9C93-7CEFAC1294BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FA3E41F-4337-4CA3-9C93-7CEFAC1294BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FA3E41F-4337-4CA3-9C93-7CEFAC1294BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13A67826-0F87-4B14-A889-C8EFF5554CE7}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\COM3D2.SaveDataExt\COM3D2.SaveDataExt.Core\COM3D2.SaveDataExt.Core.projitems*{815254fa-082c-4b7c-8851-1c676218aeb6}*SharedItemsImports = 4
+		COM3D2.API.Core\COM3D2.API.Core.projitems*{8c8f07a7-04ee-46eb-9534-99b88edde1c5}*SharedItemsImports = 4
+		COM3D2.API.Core\COM3D2.API.Core.projitems*{9f7f87e5-ba2a-4799-a338-31837f0ed4be}*SharedItemsImports = 5
+		COM3D2.API.Core\COM3D2.API.Core.projitems*{bb19e5d9-0a98-44cf-8ef1-3956c10c1d1f}*SharedItemsImports = 13
+		..\COM3D2.SaveDataExt\COM3D2.SaveDataExt.Core\COM3D2.SaveDataExt.Core.projitems*{fc16180b-1714-4960-939c-294a50c0c0a2}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

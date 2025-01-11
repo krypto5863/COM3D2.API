@@ -1,9 +1,11 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using COM3D2API.Character;
+using COM3D2API.Helpers;
 using COM3D2API.UI;
-using System.Security.Permissions;
 using System.Security;
+using System.Security.Permissions;
+
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
@@ -34,6 +36,7 @@ namespace COM3D2API
 		{
 			Logger = base.Logger;
 
+			GameCompatibility.Init();
 			SystemShortcutAPI.RegisterHooks();
 			MaidApi.Init();
 			EditModeApi.Init();
