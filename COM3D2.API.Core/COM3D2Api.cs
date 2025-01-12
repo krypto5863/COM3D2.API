@@ -5,7 +5,6 @@ using COM3D2API.Helpers;
 using COM3D2API.UI;
 using System.Security;
 using System.Security.Permissions;
-using COM3D2.CornerMessage;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
