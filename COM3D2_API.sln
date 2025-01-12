@@ -45,6 +45,7 @@ Global
 		SolutionGuid = {13A67826-0F87-4B14-A889-C8EFF5554CE7}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\COM3D2.SaveDataExt\COM3D2.SaveDataExt.Core\COM3D2.SaveDataExt.Core.projitems*{6fa3e41f-4337-4ca3-9c93-7cefac1294ba}*SharedItemsImports = 5
 		..\COM3D2.SaveDataExt\COM3D2.SaveDataExt.Core\COM3D2.SaveDataExt.Core.projitems*{815254fa-082c-4b7c-8851-1c676218aeb6}*SharedItemsImports = 4
 		COM3D2.API.Core\COM3D2.API.Core.projitems*{8c8f07a7-04ee-46eb-9534-99b88edde1c5}*SharedItemsImports = 4
 		COM3D2.API.Core\COM3D2.API.Core.projitems*{9f7f87e5-ba2a-4799-a338-31837f0ed4be}*SharedItemsImports = 5

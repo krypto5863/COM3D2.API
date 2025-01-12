@@ -18,7 +18,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\VersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\VersionRequirementsAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SystemShortcutAPI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MessageApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\CornerText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\CustomCategoryButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\EditModeApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Message.cs" />
   </ItemGroup>
 </Project>
