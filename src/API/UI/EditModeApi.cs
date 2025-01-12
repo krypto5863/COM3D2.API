@@ -1,6 +1,6 @@
-﻿using System;
+﻿using HarmonyLib;
+using System;
 using System.Collections.Generic;
-using HarmonyLib;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -70,7 +70,7 @@ namespace COM3D2API.UI
 						continue;
 					}
 
-					currentButton.onClick.Add(new EventDelegate( () => DeselectCustomButton(customButton)));
+					currentButton.onClick.Add(new EventDelegate(() => DeselectCustomButton(customButton)));
 				}
 			}
 

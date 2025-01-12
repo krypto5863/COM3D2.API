@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM3D2.API", "src\API\COM3D2.API.csproj", "{2B24B203-89CF-433D-9CCD-6C8B3AABA945}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM3D2.SaveDataExt", "..\COM3D2.SaveDataExt\COM3D2.SaveDataExt\COM3D2.SaveDataExt.csproj", "{EA60D246-0200-454E-92A4-5BF00CD40815}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2B24B203-89CF-433D-9CCD-6C8B3AABA945}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B24B203-89CF-433D-9CCD-6C8B3AABA945}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B24B203-89CF-433D-9CCD-6C8B3AABA945}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA60D246-0200-454E-92A4-5BF00CD40815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA60D246-0200-454E-92A4-5BF00CD40815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA60D246-0200-454E-92A4-5BF00CD40815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA60D246-0200-454E-92A4-5BF00CD40815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
