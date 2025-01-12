@@ -4,8 +4,10 @@ using COM3D2API.Character;
 using COM3D2API.Helpers;
 using COM3D2API.UI;
 using System.Security;
+using System.Security.Permissions;
 
 [module: UnverifiableCode]
+[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
 namespace COM3D2API
 {
