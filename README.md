@@ -7,4 +7,8 @@
 The plugin .dll should end up in COM3D2\BepInEx\plugins
 
 #### COM3D2 API
-API plugins can use to do stuff. Currently only has an API for adding buttons to the SystemShortcut (gear icon) menu, a way to set game version limits, add a new category button and add a controller to a maid you can use to dynamically work on said maid and save/load data specific to them.
+**v1.0 - [Original Download](https://github.com/DeathWeasel1337/COM3D2_Plugins/releases/download/v3/COM3D2.API.v1.0.zip)**
+
+**v1.1 - [Fixed Download](https://github.com/krypto5863/COM3D2.API/releases/tag/1.1)**
+
+API plugins can use to do stuff. Currently only has an API for adding buttons to the SystemShortcut (gear icon) menu.

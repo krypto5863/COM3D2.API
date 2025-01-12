@@ -1,5 +1,5 @@
-﻿using HarmonyLib;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using HarmonyLib;
 using System.Linq;
 
 namespace COM3D2API.Character
@@ -29,7 +29,6 @@ namespace COM3D2API.Character
 				}
 			}
 		}
-
 		private static void SaveDataExtOnPresetLoaded(Maid maid, CharacterMgr.PresetType presetType)
 		{
 			foreach (var manager in ControllerTypes)
@@ -51,7 +50,6 @@ namespace COM3D2API.Character
 				}
 			}
 		}
-
 		private static void SaveDataExtOnSaveLoaded()
 		{
 			foreach (var manager in ControllerTypes)
@@ -62,7 +60,6 @@ namespace COM3D2API.Character
 				}
 			}
 		}
-
 		public static void RegisterCharacterController<TMaidController>(string guid) where TMaidController : MaidController
 		{
 			ControllerTypes.Add(new MaidControllerManager(guid, typeof(TMaidController)));
@@ -146,7 +143,7 @@ namespace COM3D2API.Character
 				}
 			}
 
-			[HarmonyPrefix, HarmonyPatch(typeof(CharacterMgr), nameof(CharacterMgr.PresetSet), typeof(Maid), typeof(CharacterMgr.Preset), typeof(bool))]
+			[HarmonyPrefix, HarmonyPatch(typeof(CharacterMgr), nameof(CharacterMgr.PresetSet), typeof(Maid), typeof(CharacterMgr.Preset))]
 			private static void MaidPresetLoading(ref Maid __0)
 			{
 				foreach (var manager in ControllerTypes)

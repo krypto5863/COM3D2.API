@@ -1,7 +1,8 @@
 ﻿using JetBrains.Annotations;
+using SaveDataExtended;
 using System;
 using System.Collections.Generic;
-using SaveDataExtended;
+using System.Linq;
 using UnityEngine;
 
 namespace COM3D2API.Character
@@ -168,34 +169,22 @@ namespace COM3D2API.Character
 		/// <returns>Collection of relevant <see cref="MaidProp"/> for the given <see cref="CharacterMgr.PresetType"/></returns>
 		protected IEnumerable<MaidProp> GetMaidPresetTypeProps(CharacterMgr.PresetType presetType)
 		{
-			if (Maid == null) yield break; // Exit early if Maid is null
-
-			// Iterate through MaidProps and yield only those that match the preset type
-			foreach (var mp in Maid.m_aryMaidProp)
+			if (Maid == null)
 			{
-				var isValid = false;
+				return Enumerable.Empty<MaidProp>();
+			}
 
-				// Handle each preset type with a switch statement
-				switch (presetType)
-				{
-					case CharacterMgr.PresetType.Body:
-						// Body preset has two ranges: 1-80 and 116-123
-						if ((mp.idx >= 1 && mp.idx <= 80) || (mp.idx >= 116 && mp.idx <= 123)) isValid = true;
-						break;
-
-					case CharacterMgr.PresetType.Wear:
-						// Wear preset is a single range: 81-110
-						if (mp.idx >= 81 && mp.idx <= 110) isValid = true;
-						break;
-
-					default:
-						// For other preset types, return all MaidProps
-						isValid = true;
-						break;
-				}
-
-				// Yield the valid MaidProp
-				if (isValid) yield return mp;
+			if (presetType == CharacterMgr.PresetType.Body)
+			{
+				return Maid.m_aryMaidProp.Where(mp => (1 <= mp.idx && mp.idx <= 80) || (116 <= mp.idx && mp.idx <= 123));
+			}
+			else if (presetType == CharacterMgr.PresetType.Wear)
+			{
+				return Maid.m_aryMaidProp.Where((MaidProp mp) => 81 <= mp.idx && mp.idx <= 110);
+			}
+			else
+			{
+				return Maid.m_aryMaidProp;
 			}
 		}
 	}
