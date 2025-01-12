@@ -8,7 +8,7 @@ A centralized set of functions for doing stuff in COM3D2.
 
 The plugin .dll should end up in COM3D2\BepInEx\plugins
 
-#### COM3D2 API
+## Features
 Currently has:
 - Gear Icon API
 - Game Version Compatibility Alerts
