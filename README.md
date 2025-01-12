@@ -1,4 +1,5 @@
 # COM3D2.API
+A centralized set of functions for doing stuff in COM3D2.
 
 ## Installation
 1. Install [BepInEx v5.4+](https://github.com/BepInEx/BepInEx/releases)
@@ -8,4 +9,11 @@
 The plugin .dll should end up in COM3D2\BepInEx\plugins
 
 #### COM3D2 API
-API plugins can use to do stuff. Currently only has an API for adding buttons to the SystemShortcut (gear icon) menu, a way to set game version limits, add a new category button and add a controller to a maid you can use to dynamically work on said maid and save/load data specific to them.
+Currently has:
+- Gear Icon API
+- Game Version Compatibility Alerts
+- Edit Mode Category API (only does category buttons atm)
+- Maid Controller, a simple way to attach to maids and save/load data related to them.
+- Message API (Currently only support displaying text at the top left.)
+
+In memory of [DeathWeasel1337](https://github.com/DeathWeasel1337/COM3D2_Plugins)
