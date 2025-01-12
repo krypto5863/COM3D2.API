@@ -32,9 +32,6 @@
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>G:\KISS\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>G:\KISS\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
