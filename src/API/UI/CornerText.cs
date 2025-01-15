@@ -22,6 +22,7 @@ namespace COM3D2API.UI
 			return newCornerText;
 		}
 
+		private bool _newMessageQueued;
 		private const int MaxMessageQueue = 18;
 		private const int MessageDisplayLimit = 9;
 		private int _overflowCounter;
@@ -67,10 +68,12 @@ namespace COM3D2API.UI
 				return;
 			}
 
+			_newMessageQueued = true;
+
 			if (_messageQueue.Count >= MaxMessageQueue)
 			{
 				_overflowCounter++;
-				UpdateText();
+				//UpdateText();
 				return;
 			}
 
@@ -85,7 +88,7 @@ namespace COM3D2API.UI
 				_messageQueue.Add(new Message(message, duration));
 			}
 
-			UpdateText();
+			//UpdateText();
 
 			gameObject.SetActive(true);
 		}
@@ -98,7 +101,7 @@ namespace COM3D2API.UI
 			}
 
 			var timeToSubtract = Time.unscaledDeltaTime;
-			var updateText = false;
+			var updateText = _newMessageQueued;
 
 			for (var i = 0; i < _messageQueue.Count && i < MessageDisplayLimit; i++)
 			{
