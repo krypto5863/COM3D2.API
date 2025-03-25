@@ -117,8 +117,8 @@ namespace COM3D2API
 
 		private static class Hooks
 		{
-			[HarmonyPatch(typeof(SystemShortcut), "Start")]
-			[HarmonyPatch(typeof(SystemShortcut), "OnActiveSceneChanged")]
+			[HarmonyPatch(typeof(SystemShortcut), nameof(SystemShortcut.Start))]
+			[HarmonyPatch(typeof(SystemShortcut), nameof(SystemShortcut.OnActiveSceneChanged))]
 			[HarmonyPostfix]
 			private static void UpdateCollider(SystemShortcut __instance)
 			{
@@ -126,7 +126,7 @@ namespace COM3D2API
 				NGUITools.UpdateWidgetCollider(_uiShortcutSprite.gameObject);
 			}
 
-			[HarmonyPostfix, HarmonyPatch(typeof(SystemShortcut), "Awake")]
+			[HarmonyPostfix, HarmonyPatch(typeof(SystemShortcut), nameof(SystemShortcut.Awake))]
 			private static void SystemShortcut_Awake(SystemShortcut __instance)
 			{
 				_systemShortcutInstance = __instance;

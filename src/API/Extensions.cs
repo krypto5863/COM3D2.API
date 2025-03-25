@@ -1,11 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace COM3D2API
 {
 	public static class Extensions
 	{
+		/// <summary>
+		/// Resizes and reformats a texture to a size and format of your choosing.
+		/// </summary>
+		/// <param name="sourceTexture"></param>
+		/// <param name="targetWidth"></param>
+		/// <param name="targetHeight"></param>
+		/// <param name="format"></param>
+		/// <param name="mipChain"></param>
+		public static void ResizeTexture(this Texture2D sourceTexture, int targetWidth, int targetHeight, TextureFormat format, bool mipChain)
+		{
+			// Create a temporary RenderTexture with the desired dimensions
+			var rt = RenderTexture.GetTemporary(targetWidth, targetHeight);
+			RenderTexture.active = rt;
+
+			// Blit the source texture into the RenderTexture
+			Graphics.Blit(sourceTexture, rt);
+
+			// Create a new Texture2D with the target dimensions
+			sourceTexture.Reinitialize(targetWidth, targetHeight, format, mipChain);
+
+			// Read the pixels from the RenderTexture into the Texture2D
+			sourceTexture.ReadPixels(new Rect(0, 0, targetWidth, targetHeight), 0, 0);
+			sourceTexture.Apply();
+
+			// Cleanup
+			RenderTexture.ReleaseTemporary(rt);
+			RenderTexture.active = null;
+		}
+
 		public static bool TryRemoveAt<T>(this List<T> list, int index)
 		{
 			if (list == null)
@@ -101,6 +131,11 @@ namespace COM3D2API
 			resultStringBuilder.Append(str, startSearchFromIndex, charsUntilStringEnd);
 
 			return resultStringBuilder.ToString();
+		}
+
+		public static float Normalize(float value, float min, float max)
+		{
+			return (value - min) / (max - min);
 		}
 	}
 }

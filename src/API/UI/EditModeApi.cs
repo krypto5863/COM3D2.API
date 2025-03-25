@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace COM3D2API.UI
 {
-	public static class EditModeApi
+	public static partial class EditModeApi
 	{
 		internal static void Init()
 		{
@@ -76,7 +76,6 @@ namespace COM3D2API.UI
 
 			grid.Reposition();
 		}
-
 		private static void DeselectCustomButton(CustomCategoryButton customButton)
 		{
 			if (customButton.Instance == null)
@@ -172,7 +171,7 @@ namespace COM3D2API.UI
 			BaseMgr<CostumePartsEnabledMgr>.Instance.CloseRandomPresetPanel();
 		}
 
-		private static class Hooks
+		private static partial class Hooks
 		{
 			[HarmonyPostfix, HarmonyPatch(typeof(SceneEdit), nameof(SceneEdit.ToView))]
 			private static void ToViewHide()

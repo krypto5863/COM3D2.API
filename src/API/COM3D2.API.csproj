@@ -17,6 +17,28 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="UI\CustomInjectedSlider.cs" />
+    <Compile Remove="UI\CustomSubMenu.cs" />
+    <Compile Remove="UI\EditModeApi_MenuButton.cs" />
+    <Compile Remove="UI\EditModeApi_Sliders.cs" />
+    <Compile Remove="Utilities\AsyncAlternatives.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UI\CustomInjectedSlider.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="UI\CustomSubMenu.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="UI\EditModeApi_MenuButton.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="UI\EditModeApi_Sliders.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="Utilities\AsyncAlternatives.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="BepInEx.Core" Version="5.4.21" />
     <PackageReference Include="COM3D2.GameLibs" Version="3.41.0-r.0" />
   </ItemGroup>
@@ -24,20 +46,29 @@
     <ProjectReference Include="..\..\..\COM3D2.SaveDataExt\COM3D2.SaveDataExt\COM3D2.SaveDataExt.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Unity.Burst">
+      <HintPath>F:\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\Unity.Burst.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>G:\KISS\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>F:\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>G:\KISS\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>F:\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>G:\KISS\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>F:\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>F:\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>F:\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.InputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>G:\KISS\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>F:\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>G:\KISS\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>F:\COM3D2Test 2.5\COM3D2_5\COM3D2x64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup>

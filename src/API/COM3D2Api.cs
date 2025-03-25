@@ -30,7 +30,7 @@ namespace COM3D2API
 		public const string PluginName = "COM3D2 API";
 
 		/// <summary> Version of the plugin </summary>
-		public const string PluginVersion = "2.2";
+		public const string PluginVersion = "2.3";
 
 		internal new static ManualLogSource Logger;
 
@@ -45,6 +45,30 @@ namespace COM3D2API
 			MessageApi.Init();
 
 			gameObject.GetOrAddComponent<UnityMainThreadDispatcher>();
+
+#if DEBUG
+			EditModeApi.InjectSlider("Debug Slider", "body_all_slider", f =>
+			{
+				Logger.LogDebug($"Slider set to {f}");
+			}, () => 0.5f);
+
+			EditModeApi.InjectSubMenu("Debug", SceneEditInfo.EMenuCategory.身体, SceneEditInfo.CCateNameType.EType.Slider);
+
+			EditModeApi.InjectSlider("Debug Slider", "Debug", f =>
+			{
+				Logger.LogDebug($"Slider set to {f}");
+			}, () => 0.5f);
+
+			EditModeApi.InjectSlider("Debug Slider 2", "Debug", f =>
+			{
+				Logger.LogDebug($"Slider set to {f}");
+			}, () => 0.75f);
+
+			EditModeApi.InjectSlider("Debug Slider 3", "Debug", f =>
+			{
+				Logger.LogDebug($"Slider set to {f}");
+			}, () => 0.25f);
+#endif
 		}
 
 		private void Start()
